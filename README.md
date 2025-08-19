@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-  <h1>CampusFinds ✨</h1>
+  <h1>UniRetriever ✨</h1>
   <p>
     <b>Never lose anything on campus again. A centralized hub for lost and found items within your university.</b>
   </p>
@@ -11,7 +11,7 @@
 
 ### **📍 Overview**
 
-**CampusFinds** is a streamlined web application designed to help students and faculty members find their lost belongings and report items they've found on campus. By creating a dedicated, easy-to-use platform for different universities, we aim to increase the chances of reuniting people with their lost property.
+**UniRetriever** is a streamlined web application designed to help students and faculty members find their lost belongings and report items they've found on campus. By creating a dedicated, easy-to-use platform for different universities, we aim to increase the chances of reuniting people with their lost property.
 
 ### **✅ Key Features**
 
@@ -49,7 +49,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
    ```sh
    git clone [https://github.com/priyansh-dimri/UniRetriever.git](https://github.com/priyansh-dimri/UniRetriever.git)
-   cd CampusFinds
+   cd UniRetriever
    ```
 
 2. **Set up the Backend:**
