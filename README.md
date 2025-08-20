@@ -89,8 +89,8 @@ The application should now be running on `http://localhost:3000`.
 
 ### **👥 Authors**
 
-- **[Your Name]** - [GitHub Profile Link](https://github.com/priyansh-dimri)
-- **[Teammate's Name]** - [GitHub Profile Link](https://github.com/prashant-1342)
+- **Priyansh Dimri** - [GitHub Profile Link](https://github.com/priyansh-dimri)
+- **Prashant Pal** - [GitHub Profile Link](https://github.com/prashant-1342)
 
 ---
 
