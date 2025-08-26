@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './index.css'; // Make sure to import your CSS file
+import './index.css';
+import LoginPage from '../pages/LoginPage';
+import RegisterPage from '../pages/RegisterPage';
+import ItemsListPage from '../pages/ItemsListPage';
+
 
 // --- Mock Data ---
-// In a real app, this would come from your backend API
 const mockItems = [
   { _id: '1', itemName: 'Lost: Blue Water Bottle', description: 'Hydro Flask, has a small dent on the side and a sticker of a mountain.', status: 'Lost', location: 'Library, 2nd Floor', createdAt: '2024-08-18T10:00:00Z' },
   { _id: '2', itemName: 'Found: Black Wireless Mouse', description: 'Logitech MX Master 3. Left near the computers in the student union.', status: 'Found', location: 'Student Union', createdAt: '2024-08-18T12:30:00Z' },
@@ -39,7 +42,7 @@ const Navbar = ({ setCurrentPage, theme, toggleTheme }) => {
       <div className="container">
         <div className="navbar-content">
             <button onClick={() => setCurrentPage('landing')} className="navbar-brand">
-                CampusFinds ✨
+                UniRetriever ✨
             </button>
             <div className="navbar-links">
                 <button onClick={() => setCurrentPage('items')} className="nav-button">Browse Items</button>
@@ -109,71 +112,13 @@ const LandingPage = ({ setCurrentPage }) => {
     );
 };
 
-const ItemsListPage = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setItems(mockItems);
-      setLoading(false);
-    }, 1000);
-  }, []);
-
-  return (
-    <div className="container">
-      <div className="items-list-page">
-        <h1>All Lost & Found Items</h1>
-        <p>Browse items recently reported by the community.</p>
-      </div>
-      {loading ? (
-        <div className="loader"><div className="spinner"></div>Loading items...</div>
-      ) : (
-        <div className="items-grid">
-          {items.map(item => <ItemCard key={item._id} item={item} />)}
-        </div>
-      )}
-    </div>
-  );
-};
 
 const FormInput = ({ id, label, type, placeholder }) => (
-    <div className="form-input-field">
-        <label htmlFor={id}>{label}</label>
-        <input id={id} name={id} type={type} required placeholder={placeholder} />
-    </div>
-);
-
-const LoginPage = () => (
-    <div className="form-wrapper">
-        <div className="form-container">
-            <h2>Sign in to your account</h2>
-            <form className="form" onSubmit={e => e.preventDefault()}>
-                <div className="form-input-group">
-                    <FormInput id="email-address" label="Email address" type="email" placeholder="you@university.edu" />
-                    <FormInput id="password" label="Password" type="password" placeholder="••••••••" />
-                </div>
-                <div className="form-options"><a href="#">Forgot your password?</a></div>
-                <button type="submit" className="form-submit-btn">Sign in</button>
-            </form>
-        </div>
-    </div>
-);
-
-const RegisterPage = () => (
-    <div className="form-wrapper">
-        <div className="form-container">
-            <h2>Create a new account</h2>
-            <form className="form" onSubmit={e => e.preventDefault()}>
-                <div className="form-input-group">
-                    <FormInput id="username" label="Full Name" type="text" placeholder="John Doe" />
-                    <FormInput id="email-address-register" label="Email address" type="email" placeholder="you@university.edu" />
-                    <FormInput id="password-register" label="Password" type="password" placeholder="Choose a strong password" />
-                </div>
-                <button type="submit" className="form-submit-btn">Register</button>
-            </form>
-        </div>
-    </div>
+  <div className="form-input-field">
+    <label htmlFor={id}>{label}</label>
+    <input id={id} name={id} type={type} required placeholder={placeholder} />
+  </div>
 );
 
 const DashboardPage = () => (
@@ -201,12 +146,17 @@ function App() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'login': return <LoginPage />;
-      case 'register': return <RegisterPage />;
-      case 'dashboard': return <DashboardPage />;
-      case 'items': return <ItemsListPage />;
+      case 'login':
+        return <LoginPage FormInput={FormInput} />;
+      case 'register':
+        return <RegisterPage FormInput={FormInput} />;
+      case 'dashboard':
+        return <DashboardPage />;
+      case 'items':
+        return <ItemsListPage mockItems={mockItems} ItemCard={ItemCard} useState={useState} useEffect={useEffect} />;
       case 'landing':
-      default: return <LandingPage setCurrentPage={setCurrentPage} />;
+      default:  
+        return <LandingPage setCurrentPage={setCurrentPage} />;
     }
   };
 
@@ -217,7 +167,7 @@ function App() {
         {renderPage()}
       </main>
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} CampusFinds. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} UniRetriever. All rights reserved.</p>
       </footer>
     </React.Fragment>
   );
