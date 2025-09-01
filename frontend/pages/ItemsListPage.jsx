@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
-const ItemsListPage = ({mockItems,ItemCard,useState,useEffect}) => {
+const ItemsListPage = ({ mockItems, ItemCard, useState, useEffect }) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,14 +18,18 @@ const ItemsListPage = ({mockItems,ItemCard,useState,useEffect}) => {
         <p>Browse items recently reported by the community.</p>
       </div>
       {loading ? (
-        <div className="loader"><div className="spinner"></div>Loading items...</div>
+        <div className="loader">
+          <div className="spinner"></div>Loading items...
+        </div>
       ) : (
         <div className="items-grid">
-          {items.map(item => <ItemCard key={item._id} item={item} />)}
+          {items.map((item) => (
+            <ItemCard key={item._id} item={item} />
+          ))}
         </div>
       )}
     </div>
   );
 };
 
-export default ItemsListPage
+export default ItemsListPage;
